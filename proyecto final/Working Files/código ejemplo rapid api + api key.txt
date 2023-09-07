@@ -1,0 +1,27 @@
+db2c5c2c95msh4022aaabd35a24ep17fdcejsnbbdc6f431ee2    RapidAPI Application Key
+-----------------
+import requests
+
+url = "https://travelpayouts-travelpayouts-flight-data-v1.p.rapidapi.com/v2/prices/nearest-places-matrix"
+
+origen="MAD"
+destino="BJC"
+moneda="EUR"
+querystring = {"origin":origen,"destination":destino,"flexibility":"0","currency":moneda,"show_to_affiliates":"true","depart_date":"2023-11","limit":"10","distance":"100"}
+
+headers = {
+	"X-Access-Token": "1560a7d76b628bc6aa5b25d0d1857c49",
+	"X-RapidAPI-Key": "db2c5c2c95msh4022aaabd35a24ep17fdcejsnbbdc6f431ee2",
+	"X-RapidAPI-Host": "travelpayouts-travelpayouts-flight-data-v1.p.rapidapi.com"
+}
+
+response = requests.get(url, headers=headers, params=querystring)
+
+result=response.json()
+
+#print(response.json())
+#result
+#print (result.keys())
+#print (result)
+#print (result["origins"][0])
+print (result["prices"][0])
